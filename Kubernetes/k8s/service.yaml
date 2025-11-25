@@ -5,10 +5,9 @@ metadata:
   labels:
     app: zomato
 spec:
-  type: NodePort
+  type: LoadBalancer           # Changed from NodePort to LoadBalancer
   ports:
-  - port: 3000
-    targetPort: 3000
-    nodePort: 30001
+    - port: 3000               # Service port
+      targetPort: 3000         # Container port
   selector:
     app: zomato
