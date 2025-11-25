@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   name: node-exporter
-  namespace: prometheus-node-exporter
+  namespace: monitoring
 spec:
-  type: LoadBalancer           # Changed from NodePort to LoadBalancer
+  type: LoadBalancer
   selector:
-    app: node-exporter
+    app.kubernetes.io/name: node-exporter
   ports:
-    - name: node-exporter
+    - name: metrics
       protocol: TCP
-      port: 9100               # Service port
-      targetPort: 9100         # Container port
+      port: 9100
+      targetPort: 9100
